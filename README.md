@@ -2,11 +2,11 @@
 
 Hello and welcome. **Google Ads Productivity** is an app designed to be run from a server and is used to add phonecall conversions and website conversions to a Google Ads account. Please note, as of now the app is only available for local development. You will need an .env file in root directory off app with these field: 
 
-GOOGLE_CLIENT_ID
-GOOGLE_CLIENT_SECRET
-GOOGLE_REDIRECT_URL
-TEST_ACCOUNT_ID
-DEVELOPER_TOKEN
+- GOOGLE_CLIENT_ID
+- GOOGLE_CLIENT_SECRET
+- GOOGLE_REDIRECT_URL
+- TEST_ACCOUNT_ID
+- DEVELOPER_TOKEN
 
 ## The Problem
 
