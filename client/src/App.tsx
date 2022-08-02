@@ -37,6 +37,9 @@ const App: FC = () => {
           refresh: sessionStorage.refreshToken,
           sheetData
         },
+        headers: {
+          "Content-Type": "application/json",
+        },
       }
     );
     try {

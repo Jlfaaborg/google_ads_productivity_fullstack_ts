@@ -78,9 +78,12 @@ const config: Configuration = {
         proxy: {
             "/auth": {
                 target: "http://localhost:5000",
+                secure: false
             },
-            "/api/request": {
+            "/api": {
                 target: "http://localhost:5000",
+                secure: false
+
             }
         }
     },

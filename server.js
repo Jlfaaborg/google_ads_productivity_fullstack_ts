@@ -125,7 +125,7 @@ async function parseConversions(sheetData) {
       },
       click_through_lookback_window_days:
         con.click_through_lookback_window_days,
-      // view_through_lookback_window_days: con.view_through_lookback_window_days,
+      view_through_lookback_window_days: con.view_through_lookback_window_days,
       primary_for_goal: con.primary_for_goal,
     });
   });
