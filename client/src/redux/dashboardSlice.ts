@@ -49,7 +49,6 @@ interface SheetData {
   config: {
     "customID": string,
     "managerID": string,
-
   },
   phoneConversions: PhoneConversions[],
   websiteConversions: WebSiteConversions[],
@@ -82,9 +81,11 @@ export const dashboardSlice = createSlice({
   name: "dashboard",
   initialState: initialState,
   reducers: {
+    //Logged In Or Out
     logged: (state, action: PayloadAction<boolean>) => {
       state.isLoggedIn = action.payload;
     },
+    //Has Resresh Token
     setHasTokens: (state, action: PayloadAction<boolean>) => {
       state.isLoggedIn = action.payload;
     },
@@ -100,6 +101,7 @@ export const dashboardSlice = createSlice({
     showSheetData: (state, action: PayloadAction<boolean>) => {
       state.showSheetData = action.payload;
     },
+    //Changes to datatable
     handleChange: (state, action: PayloadAction<ChangePayload>) => {
       switch (action.payload.conversionToChange) {
         case "phoneConversions":
@@ -107,14 +109,12 @@ export const dashboardSlice = createSlice({
             action.payload.target
           ] = action.payload.newValue;
           console.log(state.tempdata);
-
           break;
         case "websiteConversions":
           state.tempdata.websiteConversions[action.payload.index][
             action.payload.target
           ] = action.payload.newValue;
           console.log(state.tempdata);
-
           break;
         default:
           break;
@@ -143,5 +143,3 @@ export const {
 } = dashboardSlice.actions;
 
 export default dashboardSlice.reducer;
-
-// Action creators are generated for each case reducer function

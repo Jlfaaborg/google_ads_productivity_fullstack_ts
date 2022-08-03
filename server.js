@@ -1,5 +1,6 @@
 var express = require("express");
 const bodyParser = require("body-parser");
+//To Call Google
 const {
   GoogleAdsApi,
   services,
@@ -11,6 +12,10 @@ const {
 
 require("dotenv").config();
 
+const cors = require("cors");
+
+const { google } = require("googleapis");
+
 const app = express();
 
 const port = process.env.PORT || 5000;
@@ -18,16 +23,14 @@ const port = process.env.PORT || 5000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-const cors = require("cors");
-
-const { google } = require("googleapis");
-
+//.env
 const oauth2Client = new google.auth.OAuth2(
   process.env.GOOGLE_CLIENT_ID,
   process.env.GOOGLE_CLIENT_SECRET,
   process.env.GOOGLE_REDIRECT_URL // server redirect url handler
 );
 
+//New Ads Api Client
 const client = new GoogleAdsApi({
   client_id: process.env.GOOGLE_CLIENT_ID,
   client_secret: process.env.GOOGLE_CLIENT_SECRET,
@@ -36,15 +39,17 @@ const client = new GoogleAdsApi({
 
 const fetch = require("node-fetch");
 
+//Sign In Button
 app.post("/auth", cors(), (req, res) => {
   const url = oauth2Client.generateAuthUrl({
     access_type: "offline",
     scope: ["https://www.googleapis.com/auth/adwords"],
     prompt: "select_account",
   });
-  res.send({ url });
+  res.send({ url }); //Google Auth Url
 });
 
+//After Account Is Selected Send Access and Refresh Back
 app.get("/auth/google-callback?", (req, res) => {
   // get code from url
   const code = req.query.code;
@@ -63,6 +68,7 @@ app.get("/auth/google-callback?", (req, res) => {
   });
 });
 
+//gets refresh token
 app.post("/auth/getValidToken", async (req, res) => {
   try {
     const request = await fetch("https://www.googleapis.com/oauth2/v4/token", {
@@ -88,6 +94,7 @@ app.post("/auth/getValidToken", async (req, res) => {
   }
 });
 
+//Maps The Front End State Into Conversion Actions [] For Google Service
 async function parseConversions(sheetData) {
   const configdata = sheetData.config;
   const webdata = sheetData.websiteConversions;
@@ -96,6 +103,8 @@ async function parseConversions(sheetData) {
     customer_id: configdata.cid,
     login_customer_id: configdata.mcc,
   };
+
+  //Website On Page Conversions
   const webConversions = webdata.map((con) => {
     return new resources.ConversionAction({
       name: con.name,
@@ -113,6 +122,7 @@ async function parseConversions(sheetData) {
     });
   });
 
+  //Phone Call Conversions
   const phoneConversions = phonedata.map((con) => {
     return new resources.ConversionAction({
       name: con.name,
@@ -138,10 +148,12 @@ async function parseConversions(sheetData) {
   // });
 }
 
+//Submit Button
 app.post("/api/request", async (req, res) => {
   var refreshToken = req.body.refresh;
   var sheetData = req.body.sheetData;
 
+  //Individual Customer Under Mcc
   const cust = client.Customer({
     customer_id: sheetData.config.cid,
     login_customer_id: sheetData.config.mcc,
@@ -149,6 +161,8 @@ app.post("/api/request", async (req, res) => {
   });
 
   const allconversions = await parseConversions(sheetData);
+
+  //Returns Googles Response To Front End
   let googResponse = await cust.conversionActions
     .create(allconversions)
     .catch((err) => {

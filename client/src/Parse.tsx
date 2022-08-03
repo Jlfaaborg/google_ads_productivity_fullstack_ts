@@ -1,4 +1,3 @@
-// import CallGoogle from "./CallGoogle";
 import "./css/Parse.css";
 
 import React, { DragEvent, FC, useState, useEffect } from "react";

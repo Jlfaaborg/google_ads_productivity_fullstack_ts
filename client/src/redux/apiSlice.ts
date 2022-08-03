@@ -17,6 +17,7 @@ const initialState: InitialState = {
   currentRequestId: "",
 };
 
+//Calls Express to Call Google Ads Api
 export const callAPI = createAsyncThunk(
   "api/request",
   async ({ url, method, data, headers }: any, { rejectWithValue }) => {

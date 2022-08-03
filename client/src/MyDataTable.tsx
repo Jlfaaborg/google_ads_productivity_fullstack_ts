@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-key */
-import "./MyDataTable.css";
+import "./css/MyDataTable.css";
 import React, { SyntheticEvent, FC, useState, ChangeEvent, } from "react";
 import { RootState, useAppDispatch } from "./redux/store";
 
@@ -74,6 +74,7 @@ const MyDataTable: FC = () => {
     );
     dispatch({ type: "dashboard/handleChange", payload: temp });
   };
+  
   return (
     <React.Fragment>
       {viewMode.status === "web" && <div><h2>Website Conversions</h2><table className="Table">
