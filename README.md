@@ -15,7 +15,9 @@ Technologies:
  - **Redux** state management (with  **Hooks**) 
 
 
-## Live Demo
+# Live Demo
+
+## Note That This App Is Currently Built For Functionality Not Presentation (As Seen By The Default React Logo)
 
 [Google Ads Productivity](https://app.jlfaaborg.com/)
 
