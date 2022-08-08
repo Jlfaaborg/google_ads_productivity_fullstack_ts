@@ -17,7 +17,7 @@ Technologies:
 
 ## Live Demo
 
-###[Google Ads Productivity](https://app.jlfaaborg.com/)
+[Google Ads Productivity](https://app.jlfaaborg.com/)
 
-###[Youtube Walkthrough](https://www.youtube.com/watch?v=MKl3-LJWb3A)
+[Youtube Walkthrough](https://www.youtube.com/watch?v=MKl3-LJWb3A)
 
