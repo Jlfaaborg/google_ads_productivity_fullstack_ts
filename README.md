@@ -19,6 +19,8 @@ Technologies:
 
 ### Note That This App Is Currently Built For Functionality Not Presentation (As Seen By The Default React Logo)
 
+[Download Template](https://jlfaaborg.com/template.zip)
+
 [Google Ads Productivity](https://app.jlfaaborg.com/)
 
 [Youtube Walkthrough](https://www.youtube.com/watch?v=MKl3-LJWb3A)
