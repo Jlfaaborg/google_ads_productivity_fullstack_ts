@@ -1,0 +1,15 @@
+.Auth {
+    text-align: center;
+    display: flex;
+    
+    min-height: 10vh;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.Auth button {
+    background-color: black;
+    color: white;
+    min-width: 15vw;
+}
