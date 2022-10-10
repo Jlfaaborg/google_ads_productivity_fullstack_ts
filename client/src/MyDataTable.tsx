@@ -53,12 +53,12 @@ const MyDataTable: FC = () => {
     switch (viewMode.status) {
       case "web":
         setViewMode({
-          status: "phone"
+          status: "web"
         });
         break;
       case "phone":
         setViewMode({
-          status: "web"
+          status: "phone"
         });
         break;
       default:
